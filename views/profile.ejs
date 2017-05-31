@@ -1,0 +1,46 @@
+<% layout('layout') -%>
+<% block('js').append('<script src="socket.io/socket.io.js"></script>') %>
+<% block('js').append('<script src="javascript/sockets.js"></script>') %>
+
+<div id="profile">
+    <span class="avatar"><span class="ion-person" style="font-size: 32px; margin-left: 13px;"></span></span>
+    <span id="username" style="margin-left: 10px;"><%= user.username %></span>
+    <span id="userId" style="display: none;"><%= user.id %></span>
+</div>
+<div id="colorAction">
+    <span class="red" data-state="Occupé" data-code="3"></span>
+    <span class="orange" data-state="Absent" data-code="2"></span>
+    <span class="green" data-state="Connecté" data-code="1"><span class="active"></span></span>
+</div>
+<span id="state">Connecté</span>
+<hr>
+
+<div id="chatArea">
+    <% messages.forEach(function(message){ %>
+        <% if (message.id_user == user.id) { %>
+            <div class="userMe">
+                <span>
+                    <%= message.username %>
+                </span>
+                <%= message.message %>
+            </div>
+        <% } else { %> 
+            <div class="user">
+                <span>
+                    <%= message.username %>
+                </span>
+                <%= message.message %>
+            </div>
+        <% } %>
+    <% }); %>
+</div>
+
+<!-- Personne présente dans la conversation -->
+<div id="connectedUser"></div>
+
+<!-- <div id="isWriting"><span class="ion-chatbubble-working icon"></span> <span class="text">XXX est entrain d'écrire</span></div> -->
+
+<div id="msgChat">
+    <textarea class="contentMsg" placeholder="Votre message ici ..."></textarea>
+    <button class="sendMsg"><span class="ion-ios-arrow-thin-right"></span></button>
+</div>

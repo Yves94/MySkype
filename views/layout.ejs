@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+
+    <link rel="stylesheet" type="text/css" href="css/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
+    <%- block('css').toString() %>
+
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/client.js"></script>
+    <%- block('js').toString() %>
+</head>
+<body>
+
+    <div id="menu">
+        <ul class="tabs">
+            <li data-url="/" <% if(title == 'Accueil') { %> class="active" <% } else { %> class="" <% } %> >
+                <span class="ion-home icon"></span>
+                <span class="text">Accueil</span>
+            </li>
+            <li data-url="/profile" <% if(title == 'Profile') { %> class="active" <% } else { %> class="" <% } %> >
+                <span class="ion-chatboxes icon"></span>
+                <span class="text">Messages</span>
+            </li>
+            <!-- <li data-url="/page">
+                <span class="ion-alert icon"></span>
+                <span class="text">Page</span>
+            </li> -->
+            <% if (typeof user == 'object') { %>
+                <li data-url="/logout">
+                    <span class="ion-log-out icon"></span>
+                    <span class="text">Fermer</span>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+    <div id="container">
+        <%- body -%>
+    </div>
+
+    <div id="boxNotified"></div>
+</body>
+</html>

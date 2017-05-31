@@ -1,0 +1,22 @@
+<% layout('layout') -%>
+
+<% if (message.length > 0) { %>
+    <div id="msgError"><%= message %></div>
+<% } %>
+
+<div class="form">
+    <div class="thumbnail"><img src="img/hat.svg"></div>
+    <form class="register-form" action="/signup" method="post">
+        <input type="text" name="username" placeholder="Nom">
+        <input type="password" name="password" placeholder="Mot de Passe">
+        <input type="text" name="email" placeholder="Adresse Email">
+        <button>S'inscrire</button>
+        <p class="message">Déjà un compte ? <a href="#">Se connecter</a></p>
+    </form>
+    <form class="login-form" action="/" method="post">
+        <input type="text" name="username" placeholder="Nom">
+        <input type="password" name="password" placeholder="Mot de Passe">
+        <button>Se Connecter</button>
+        <p class="message">Pas encore inscrit ? <a href="#">Creer un compte</a></p>
+    </form>
+</div>
